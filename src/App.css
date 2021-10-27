@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+.container {
+  grid: 100px 300px / 3fr 1fr;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
