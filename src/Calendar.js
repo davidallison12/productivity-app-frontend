@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-
+import SimpleReactCalendar from 'simple-react-calendar'
 
 class Calendar extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {}
     }
     render() { 
         return ( 
-            <div></div>
+            <React.Fragment>
+                <SimpleReactCalendar />
+            </React.Fragment> 
+
+            
          );
     }
 }
