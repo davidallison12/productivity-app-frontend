@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Nav from './Nav';
 import GoalsForm from './GoalsForm';
+import TasksForm from './TasksForms';
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -42,7 +43,7 @@ getGoals = () => {
 
 
  // Add Goals
-  addGoals = (newGoal) => {
+  addGoal = (newGoal) => {
   const copyGoals = [...this.state.goalsData]
   copyGoals.push(newGoal)
   this.setState({
@@ -119,7 +120,10 @@ deleteTask = (id) => {
   })
 }
 
-
+componentDidMount() {
+  this.getGoals()
+  this.getTasks()
+}
 
 
   render() { 
@@ -127,7 +131,8 @@ deleteTask = (id) => {
       <>
       <h1>WELCOME TO THE APP</h1>
       <Nav />
-      <GoalsForm />
+      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
+      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
       </>
      );
   }
