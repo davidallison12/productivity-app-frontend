@@ -2,9 +2,11 @@ import './App.css';
 import React, { Component } from 'react';
 import Nav from './Nav';
 import GoalsForm from './GoalsForm';
+import TasksForm from './TasksForms';
+import GoalsList from './GoalsList';
+import TasksList from './TasksList';
+import Calendar from './Calendar'
 
-import TasksForm from './TasksForms'
-import Calendar from 'react-calendar';
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -17,7 +19,6 @@ class App extends Component {
       userData: [],
       goalsData: [],
       tasksData: [],
-      date: new Date(),
      }
   }
 
@@ -46,7 +47,7 @@ getGoals = () => {
 
 
  // Add Goals
-  addGoals = (newGoal) => {
+  addGoal = (newGoal) => {
   const copyGoals = [...this.state.goalsData]
   copyGoals.push(newGoal)
   this.setState({
@@ -123,35 +124,26 @@ deleteTask = (id) => {
   })
 }
 
-onChange = date => this.setState({date})
+componentDidMount() {
+  this.getGoals()
+  this.getTasks()
+}
 
 
   render() { 
     return ( 
       <>
       <h1>WELCOME TO THE APP</h1>
-      <div className='app'>
-     
-      </div>
-    
-    
-  );
-
-
       <Nav />
       <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
       <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
+      <GoalsList goals={this.state.goalsData} />
+      <TasksList tasks={this.state.tasksData}/>
       <GoalsForm />
-      <Calendar 
-      onChange={this.onChange}
-      value={this.state.date}
-      />
-      
+      <Calendar />
       </>
      );
   }
 }
-
-
  
 export default App;
