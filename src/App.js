@@ -2,6 +2,8 @@ import './App.css';
 import React, { Component } from 'react';
 import Nav from './Nav';
 import GoalsForm from './GoalsForm';
+import Calendar from './Calendar'
+
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -128,6 +130,7 @@ deleteTask = (id) => {
       <h1>WELCOME TO THE APP</h1>
       <Nav />
       <GoalsForm />
+      <Calendar />
       </>
      );
   }
