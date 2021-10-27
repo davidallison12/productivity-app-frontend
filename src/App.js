@@ -2,8 +2,9 @@ import './App.css';
 import React, { Component } from 'react';
 import Nav from './Nav';
 import GoalsForm from './GoalsForm';
-import SimpleReactCalendar from 'simple-react-calendar'
 
+import TasksForm from './TasksForms'
+import Calendar from 'react-calendar';
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -16,6 +17,7 @@ class App extends Component {
       userData: [],
       goalsData: [],
       tasksData: [],
+      date: new Date(),
      }
   }
 
@@ -121,6 +123,7 @@ deleteTask = (id) => {
   })
 }
 
+onChange = date => this.setState({date})
 
 
   render() { 
@@ -136,8 +139,14 @@ deleteTask = (id) => {
 
 
       <Nav />
+      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
+      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
       <GoalsForm />
-      <SimpleReactCalendar  activeMonth={new Date()} />
+      <Calendar 
+      onChange={this.onChange}
+      value={this.state.date}
+      />
+      
       </>
      );
   }
