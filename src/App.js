@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 import GoalsForm from './GoalsForm';
 import TasksForm from './TasksForms';
+import GoalsList from './GoalsList';
+import TasksList from './TasksList';
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -133,6 +135,8 @@ componentDidMount() {
       <Nav />
       <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
       <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
+      <GoalsList goals={this.state.goalsData} />
+      <TasksList tasks={this.state.tasksData}/>
       </>
      );
   }
