@@ -2,11 +2,11 @@ import './App.css';
 import React, { Component } from 'react';
 import Nav from './Nav';
 import GoalsForm from './GoalsForm';
-import TasksForm from './TasksForms';
-import GoalsList from './GoalsList';
-import TasksList from './TasksList';
-import Calendar from './Calendar'
-
+// import GoalsList from '.GoalsList'
+import TasksForm from './TasksForms'
+import Calendar from 'react-calendar';
+// import Button from 'react-bootstrap/Button';
+// import 'react-calendar/dist/Calendar.css';
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -19,6 +19,7 @@ class App extends Component {
       userData: [],
       goalsData: [],
       tasksData: [],
+      date: new Date(),
      }
   }
 
@@ -47,7 +48,7 @@ getGoals = () => {
 
 
  // Add Goals
-  addGoal = (newGoal) => {
+  addGoals = (newGoal) => {
   const copyGoals = [...this.state.goalsData]
   copyGoals.push(newGoal)
   this.setState({
@@ -124,26 +125,40 @@ deleteTask = (id) => {
   })
 }
 
-componentDidMount() {
-  this.getGoals()
-  this.getTasks()
-}
+onChange = date => this.setState({date})
+// onSubmit = tasksData => this.setState({tasksData})
+// onSubmit = goalsData => this.setState({goalsData})
 
 
   render() { 
     return ( 
       <>
       <h1>WELCOME TO THE APP</h1>
+      <div className='app'>
+     
+      </div>
+    
+    
+  );
+
+
       <Nav />
       <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
       <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
-      <GoalsList goals={this.state.goalsData} />
-      <TasksList tasks={this.state.tasksData}/>
       <GoalsForm />
-      <Calendar />
+      <Calendar 
+        onChange={this.onChange}
+        value={this.state.date}
+        // onSubmit={this.onSubmit}
+        
+      />
+   
+      
       </>
      );
   }
 }
+
+
  
 export default App;

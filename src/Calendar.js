@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Calendar from 'react-calendar'
+
+
 
 class Calendar extends Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class Calendar extends Component {
     render() { 
         return ( 
             <React.Fragment>
-                <Calendar />
+                
+                
             </React.Fragment> 
 
             
