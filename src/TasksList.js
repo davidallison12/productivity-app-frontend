@@ -89,13 +89,13 @@ class TasksList extends Component {
   render() {
     const listTasks = this.props.tasks.map((task) => {
       return (
-        <tr key={task._id}>
-          <td>{task.task}</td>
+        <tr class="border-dark" key={task._id}>
+          <td><b>{task.task}</b></td>
           <td>{task.dueDate}</td>
           <td>{task.createdOn}</td>
           <td>{task.accomplished ? "true" : "false"}</td>
           <td>
-            <button
+            <button type="button" class="btn btn-light"
               onClick={() => {
                 this.showModal(task);
               }}
@@ -116,15 +116,14 @@ class TasksList extends Component {
     });
 
     return (
-      <div>
-        <h1>Task List</h1>
-        <table>
-          <thead>
-            <th>Task</th>
-            <th>Due Date</th>
-            <th>Created On</th>
-            <th>Accomplished</th>
-            <th> </th>
+      <div class="container">
+        <h1 class="font-link">Task List</h1>
+        <table class="table table-warning table-striped">
+          <thead class="font-headers">
+            <td>Task</td>
+            <td>Due Date</td>
+            <td>Created On</td>
+            <td>Accomplished</td>
           </thead>
           <tbody>{listTasks}</tbody>
         </table>

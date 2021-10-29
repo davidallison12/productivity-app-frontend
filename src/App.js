@@ -172,7 +172,7 @@ class App extends Component {
             )}
 
 
-            
+
             {/* <Calendar /> */}
             {/* {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} /> */}
 
