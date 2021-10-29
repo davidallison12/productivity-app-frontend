@@ -11,7 +11,7 @@ class TasksList extends Component {
     render() { 
         const listTasks = this.props.tasks.map((task) => {
             return(
-                <tr>
+                <tr key={task._id}>
                 <td>{task.task}</td>
                 <td>{task.dueDate}</td>
                 <td>{task.tags}</td>

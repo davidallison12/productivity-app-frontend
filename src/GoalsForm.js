@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import EditGoals from './EditGoals';
 
 
 
@@ -64,8 +65,6 @@ class GoalsForm extends Component {
                     <label>Tags: </label>
                     <input type="text" id="name" name="tags" onChange={(e) => this.handleChange(e)} value={this.state.tags} />
                     <input type="submit" value="Add New Goal" />
-
-
 
                 </form>
             </div>
