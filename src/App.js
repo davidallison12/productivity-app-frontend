@@ -244,7 +244,6 @@ componentDidMount() {
 
   render() {
     return (
-<<<<<<< HEAD
       <>
         {/*Conditional for User Login*/}
         {/* If user not logged in, will go to welcome page */}
@@ -294,17 +293,6 @@ componentDidMount() {
         )}
       </>
     );
-=======
-      <div className="App">
-      <h1>WELCOME TO THE APP</h1>
-      <Nav />
-      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
-      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
-      <Signup />
-      <Login />
-      </div>
-     );
->>>>>>> adea093 (signup and login form)
   }
 }
 
