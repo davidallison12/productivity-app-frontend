@@ -178,7 +178,7 @@ componentDidMount() {
           {/* <Calendar /> */}
           {/* {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} /> */}
           <TasksForm baseUrl={baseUrl} addTask={this.addTask} /> 
-          <GoalsList goals={this.state.goalsData}  goalSubmit={this.handleGoalSubmit} handleData={this.handleEditedData} baseUrl={baseUrl} getGoals={this.getGoals}/>
+          <GoalsList goals={this.state.goalsData}  goalSubmit={this.handleGoalSubmit} handleData={this.handleEditedData} baseUrl={baseUrl} getGoals={this.getGoals} deleteGoal={this.deleteGoal}/>
           <TasksList tasks={this.state.tasksData} handleEditedTaskData={this.handleEditedTaskData} baseUrl={baseUrl} getTasks={this.getTasks} deleteTask={this.deleteTask}/>
         </>
         : <Welcome />
