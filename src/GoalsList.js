@@ -87,6 +87,7 @@ class GoalsList extends Component {
                 <td>{goal.tags}</td>
                 <td><button onClick={() => {this.showModal(goal)}} > EDIT
                     </button></td>
+                <td onClick={() => {this.props.deleteGoal(goal._id)}}><i className="icon bi-trash-fill"></i></td>
                 </tr>
             )
         })
@@ -101,7 +102,8 @@ class GoalsList extends Component {
                        <th>Due Date</th>
                        <th>Accomplished</th>
                        <th>Tags</th>
-                       <th></th>
+                       <th>  </th>
+                       <th>  </th>
                     </thead>
                     <tbody>
                         {listGoals}
