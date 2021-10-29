@@ -7,12 +7,12 @@ const Nav = (props) => {
       <ul className="nav">
         <li className="nav-item">
           <a className="nav-link" onClick={props.toggleGoalModal} href="#">
-            Active
+            Add A Goal
           </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
-            Link
+          <a className="nav-link" href="#" onClick={props.toggleTaskModal}>
+            Add A Task
           </a>
         </li>
         <li className="nav-item">
