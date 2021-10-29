@@ -22,30 +22,56 @@ class App extends Component {
     };
   }
 
-  // GOALS CRUD
 
-  getGoals = () => {
-    // fetch
-    fetch(baseUrl + "/goals")
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          return [];
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          goalsData: data,
-        });
-      });
-  };
 
-  // Add Goals
+
+// GOALS CRUD
+
+getGoals = () => {
+  // fetch
+  fetch(baseUrl + '/goals')
+  .then((res) => {
+    if (res.status === 200) {
+      return res.json()
+    } else {
+      return []
+    }
+  })
+  .then((data) => {
+    console.log(data)
+    this.setState({
+      goalsData: data
+    })
+  })
+}
+
+
+ // Add Goals
   addGoal = (newGoal) => {
-    const copyGoals = [...this.state.goalsData];
-    copyGoals.push(newGoal);
+  const copyGoals = [...this.state.goalsData]
+  copyGoals.push(newGoal)
+  this.setState({
+    goalsData: copyGoals
+  })
+}
+
+
+//Edit Goals
+
+
+
+
+
+
+// Delete Goals
+deleteGoal = (id) => {
+  fetch(baseUrl + '/goals/' + id, {
+    method: "DELETE"
+  }).then((res) => {
+    console.log(res)
+    const findIndex = this.state.goalsData.findIndex((goal) => goal._id === id)
+    const copyGoals = [...this.state.goalsData]
+    copyGoals.splice(findIndex, 1)
     this.setState({
       goalsData: copyGoals,
     });
@@ -148,6 +174,7 @@ class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <>
         {/*Conditional for User Login*/}
         {/* If user not logged in, will go to welcome page */}
@@ -172,7 +199,7 @@ class App extends Component {
             )}
 
 
-            
+
             {/* <Calendar /> */}
             {/* {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} /> */}
 
@@ -197,6 +224,15 @@ class App extends Component {
         )}
       </>
     );
+=======
+      <div className="App">
+      <h1>WELCOME TO THE APP</h1>
+      <Nav />
+      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
+      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
+      </div>
+     );
+>>>>>>> 05091af (Created signup form)
   }
 }
 
