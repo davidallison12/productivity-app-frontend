@@ -22,37 +22,76 @@ class App extends Component {
     };
   }
 
-  // GOALS CRUD
 
-  getGoals = () => {
-    // fetch
-    fetch(baseUrl + "/goals")
-      .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          return [];
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          goalsData: data,
-        });
-      });
-  };
 
-  // Add Goals
+
+// GOALS CRUD
+
+getGoals = () => {
+  // fetch
+  fetch(baseUrl + '/goals', {
+    credentials: 'include' // sending cookies
+  })
+  .then((res) => {
+    if (res.status === 200) {
+      return res.json()
+    } else {
+      return []
+    }
+  })
+  .then((data) => {
+    console.log(data)
+    this.setState({
+      goalsData: data
+    })
+  })
+}
+
+
+ // Add Goals
   addGoal = (newGoal) => {
-    const copyGoals = [...this.state.goalsData];
-    copyGoals.push(newGoal);
+  const copyGoals = [...this.state.goalsData]
+  copyGoals.push(newGoal)
+  this.setState({
+    goalsData: copyGoals
+  })
+}
+
+
+//Edit Goals
+
+
+
+
+
+
+// Delete Goals
+deleteGoal = (id) => {
+  fetch(baseUrl + '/goals/' + id, {
+    method: "DELETE"
+  }).then((res) => {
+    console.log(res)
+    const findIndex = this.state.goalsData.findIndex((goal) => goal._id === id)
+    const copyGoals = [...this.state.goalsData]
+    copyGoals.splice(findIndex, 1)
     this.setState({
       goalsData: copyGoals,
     });
   };
 
-  //Edit Goals
-  handleEditedData = (data) => {
+//======= TASKS CRUD FUNCTIONS =========
+getTasks = () => {
+  fetch(baseUrl + '/tasks', {
+    credentials: 'include' // sending cookies
+  })
+  .then((res) => {
+    if(res.status === 200) {
+      return res.json()
+    } else {
+      return[]
+    }
+  }).then((data) => {
+    console.log(data)
     this.setState({
       goalsData: data,
     });
@@ -135,11 +174,68 @@ class App extends Component {
     });
   };
 
-  toggleTaskModal = () => {
-    this.setState({
-      tasksFormModal: !this.state.tasksFormModal,
-    });
-  };
+// LOGIN USER
+loginUser = async (e) => {
+  e.preventDefault()
+  const url = baseUrl + '/users/login'
+  const loginBody = {
+    email: e.target.email.value,
+    password: e.target.password.value
+  }
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(loginBody),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "include" // SENDING COOKIES
+    })
+
+    console.log(response)
+    console.log('BODY: ', response.body)
+
+    if (response.status === 200) {
+      this.getGoals()
+      this.getTask()
+    }
+  }
+  catch (err) {
+    console.log('Error => ', err);
+  }
+}
+
+// REGISTER USER
+register = async (e) => {
+  e.preventDefault()
+  const url = baseUrl + 'users/signup'
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        username: e.target.username.value,
+        password: e.target.password.value,
+        confirmPassword: e.target.confirmPassword.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if (response.status === 200) {
+      this.getGoals()
+      this.getTasks()
+    }
+  }
+  catch (err) {
+    console.log('Error => ', err)
+  }
+}
+
+
+componentDidMount() {
+  this.getGoals()
+  this.getTasks()
+}
 
   componentDidMount() {
     this.getGoals();
