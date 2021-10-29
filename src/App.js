@@ -5,6 +5,7 @@ import GoalsForm from './GoalsForm';
 import TasksForm from './TasksForms';
 import GoalsList from './GoalsList';
 import TasksList from './TasksList';
+import Welcome from './Welcome';
 
 let baseUrl = process.env.BASE_URL || "http://localhost:3003";
 
@@ -17,6 +18,9 @@ class App extends Component {
       userData: [],
       goalsData: [],
       tasksData: [],
+      userLoggedIn:true, // If false, will be sent to welocome page to sign up and log in. If true, will be sent to page.
+      goalsFormModal: false,
+      tasksFormModal: false,
      }
   }
 
@@ -55,7 +59,11 @@ getGoals = () => {
 
 
 //Edit Goals
-
+handleEditedData = (data) => {
+  this.setState({
+    goalsData: data,
+  });
+}
 
 
 
@@ -105,7 +113,7 @@ addTask = (newTask) => {
 
 
 // Edit Task
-
+ 
 
 // Delete Task
 deleteTask = (id) => {
@@ -122,21 +130,54 @@ deleteTask = (id) => {
   })
 }
 
+//======= MODALS ========
+toggleGoalModal = () => {
+  this.setState({
+    goalsFormModal:!this.state.goalsFormModal
+  })
+}
+
+toggleTaskModal = () => {
+  this.setState({
+    tasksFormModal:!this.state.tasksFormModal
+  })
+}
+
+
 componentDidMount() {
   this.getGoals()
   this.getTasks()
 }
 
 
+
+
+
+
   render() { 
     return ( 
       <>
-      <h1>WELCOME TO THE APP</h1>
-      <Nav />
-      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
-      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
-      <GoalsList goals={this.state.goalsData} />
-      <TasksList tasks={this.state.tasksData}/>
+      {/*Conditional for User Login*/}
+      {/* If user not logged in, will go to welcome page */}
+      {/* If logged in, will navigate to main dashboard */}
+      { this.state.userLoggedIn ? 
+        <>
+          <h1>WELCOME TO THE APP</h1>
+          <Nav toggleGoalModal={this.toggleGoalModal} toggleTaskModal={this.toggleTaskModal}/>
+          {this.state.goalsFormModal &&
+          <>
+          <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
+          </>
+          }
+          {/* <Calendar /> */}
+          {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
+          <TasksForm baseUrl={baseUrl} addTask={this.addTask} /> */}
+          <GoalsList goals={this.state.goalsData}  goalSubmit={this.handleGoalSubmit} handleData={this.handleEditedData} baseUrl={baseUrl} getGoals={this.getGoals}/>
+          <TasksList tasks={this.state.tasksData}/>
+        </>
+        : <Welcome />
+      }
+
       </>
      );
   }
