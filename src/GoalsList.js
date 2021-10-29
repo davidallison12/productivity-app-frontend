@@ -89,8 +89,9 @@ class GoalsList extends Component {
   render() {
     const listGoals = this.props.goals.map((goal) => {
       return (
-        <tr key={goal._id}>
-          <td>{goal.goal}</td>
+        // <div class>
+        <tr class="border-dark" key={goal._id}>
+          <td><b>{goal.goal}</b></td>
           <td>{goal.dueDate}</td>
           <td>{goal.accomplished ? "true" : "false"}</td>
           <td>{goal.tags}</td>
@@ -112,14 +113,14 @@ class GoalsList extends Component {
             <i className="icon bi-trash-fill"></i>
           </td>
         </tr>
-        
+        // </div>
       );
     });
 
     return (
-      <div>
+      <div class="container">
         <h1>Goals List</h1>
-        <table>
+        <table class="table table-primary table-striped">
           <thead>
             <th>Goal</th>
             <th>Due Date</th>

@@ -89,8 +89,8 @@ class TasksList extends Component {
   render() {
     const listTasks = this.props.tasks.map((task) => {
       return (
-        <tr key={task._id}>
-          <td>{task.task}</td>
+        <tr class="border-dark" key={task._id}>
+          <td><b>{task.task}</b></td>
           <td>{task.dueDate}</td>
           <td>{task.createdOn}</td>
           <td>{task.accomplished ? "true" : "false"}</td>
@@ -116,9 +116,9 @@ class TasksList extends Component {
     });
 
     return (
-      <div>
+      <div class="container">
         <h1>Task List</h1>
-        <table>
+        <table class="table table-warning table-striped">
           <thead>
             <th>Task</th>
             <th>Due Date</th>

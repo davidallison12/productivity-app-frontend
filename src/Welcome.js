@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class Welcome extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             signUpModal: false,
             loginModal: false
          }
@@ -29,16 +29,22 @@ class Welcome extends Component {
 
     }
 
+    handleChange = (event) => {
+        this.setState({
+           [event.target.name] : event.target.value
+        })
+    }
 
 
-    render() { 
-        return ( 
+
+    render() {
+        return (
             <>
             <h1>WELCOME TO ACCOMPLI</h1>
             <h5>Sign in or login to get started meeting your goals!</h5>
-            
-            
-           
+
+
+
             <div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signUpModal">SIGN UP</button>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">LOGIN</button>
@@ -88,7 +94,7 @@ class Welcome extends Component {
                     onChange={(e) => this.handleChange(e)}
                     value={this.state.confirmedPassword}
                   />
- 
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -137,5 +143,5 @@ class Welcome extends Component {
          );
     }
 }
- 
+
 export default Welcome;

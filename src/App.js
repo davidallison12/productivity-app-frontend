@@ -16,7 +16,7 @@ class App extends Component {
       userData: [],
       goalsData: [],
       tasksData: [],
-      userLoggedIn: false, // If false, will be sent to welocome page to sign up and log in. If true, will be sent to page.
+      userLoggedIn: true, // If false, will be sent to welocome page to sign up and log in. If true, will be sent to page.
       goalsFormModal: false,
       tasksFormModal: false,
     };
@@ -172,7 +172,7 @@ class App extends Component {
             )}
 
 
-            
+
             {/* <Calendar /> */}
             {/* {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} /> */}
 
