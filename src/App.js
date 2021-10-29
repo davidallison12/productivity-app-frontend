@@ -161,13 +161,13 @@ class App extends Component {
 
             {this.state.goalsFormModal && (
               <>
-                <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} goalsFormModal={this.state.goalsFormModal} toggleGoalModal={this.toggleGoalModal}/>
+                <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} goalsFormModal={this.state.goalsFormModal} toggleGoalModal={this.toggleGoalModal} />
               </>
             )}
 
             {this.state.tasksFormModal && (
               <>
-                <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
+                <TasksForm baseUrl={baseUrl} addTask={this.addTask}  tasksFormModal={this.state.tasksFormModal} toggleTaskModal={this.toggleTaskModal} />
               </>
             )}
 

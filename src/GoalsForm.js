@@ -47,13 +47,9 @@ class GoalsForm extends Component {
           accomplished: false,
           tags: "",
         });
-        this.props.toggleGoalModal()
+        this.props.toggleGoalModal();
       });
-
   };
-
-
-  
 
   handleShow = () => {
     this.setState({
@@ -67,10 +63,6 @@ class GoalsForm extends Component {
     });
   };
 
-
-
-
-
   render() {
     console.log(this.state.goal);
     return (
@@ -79,11 +71,11 @@ class GoalsForm extends Component {
           show={this.props.goalsFormModal}
           onHide={this.props.toggleGoalModal}
         >
-            <form onSubmit={this.handleSubmit}>
-          <Modal.Header closeButton>
-            <Modal.Title>Create New Goal</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+          <form onSubmit={this.handleSubmit}>
+            <Modal.Header closeButton>
+              <Modal.Title>Create New Goal</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
               <label htmlFor="goal">Goal: </label>
               <input
                 type="text"
@@ -108,17 +100,21 @@ class GoalsForm extends Component {
                 onChange={(e) => this.handleChange(e)}
                 value={this.state.tags}
               />
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.props.toggleGoalModal}>
-              Close
-            </Button>
-              <input className="btn btn-primary" type="submit" value="Add New Goal" />
-            {/* <Button variant="primary"  type="submit" onClick={this.props.toggleGoalModal}>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.props.toggleGoalModal}>
+                Close
+              </Button>
+              <input
+                className="btn btn-primary"
+                type="submit"
+                value="Add New Goal"
+              />
+              {/* <Button variant="primary"  type="submit" onClick={this.props.toggleGoalModal}>
               Add New Goal
             </Button> */}
-          </Modal.Footer>
-            </form>
+            </Modal.Footer>
+          </form>
         </Modal>
       </>
     );
