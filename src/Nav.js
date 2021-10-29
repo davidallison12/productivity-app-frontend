@@ -3,6 +3,8 @@ import Menu from "./Menu"; // Dropdown Menu Component
 
 const Nav = (props) => {
   return (
+      <nav class="navbar navbar-expand-lg bg-info bg-gradient">
+    <img className="navbar-brand" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-success-success-flatart-icons-outline-flatarticons.png" alt="Accompli Logo"/>
     <div>
       <ul className="nav">
         <li className="nav-item">
@@ -17,7 +19,7 @@ const Nav = (props) => {
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">
-            Link
+           Calandar View
           </a>
         </li>
         <li className="nav-item">
@@ -25,6 +27,7 @@ const Nav = (props) => {
         </li>
       </ul>
     </div>
+    </nav>
   );
 };
 

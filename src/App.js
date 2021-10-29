@@ -154,7 +154,6 @@ class App extends Component {
         {/* If logged in, will navigate to main dashboard */}
         {this.state.userLoggedIn ? (
           <>
-            <h1>WELCOME TO THE APP</h1>
             <Nav
               toggleGoalModal={this.toggleGoalModal}
               toggleTaskModal={this.toggleTaskModal}
