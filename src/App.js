@@ -174,7 +174,6 @@ deleteGoal = (id) => {
 
   render() {
     return (
-<<<<<<< HEAD
       <>
         {/*Conditional for User Login*/}
         {/* If user not logged in, will go to welcome page */}
@@ -224,15 +223,6 @@ deleteGoal = (id) => {
         )}
       </>
     );
-=======
-      <div className="App">
-      <h1>WELCOME TO THE APP</h1>
-      <Nav />
-      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
-      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
-      </div>
-     );
->>>>>>> 05091af (Created signup form)
   }
 }
 
