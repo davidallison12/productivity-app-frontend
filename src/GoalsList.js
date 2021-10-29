@@ -17,9 +17,9 @@ class GoalsList extends Component {
             modalHere: true,
             currentGoal: goal,
             goal: goal.goal,
-            dueDate: '',
+            dueDate: goal.date,
             accomplished: false,
-            tags:'',
+            tags: goal.tags,
         })
     }
 
@@ -110,14 +110,14 @@ class GoalsList extends Component {
 
                 {this.state.modalHere &&
                 
-                <div class="modal-dialog">
-                  <div class="modal-content">
+                <div className="modal-dialog">
+                  <div className="modal-content">
                       <form onSubmit={this.handleSubmit}>
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="editGoalsModalLabel">Edit Goals</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="editGoalsModalLabel">Edit Goals</h5>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                     
                         <label htmlFor="goal">Goal: </label>
                         <input
@@ -144,8 +144,8 @@ class GoalsList extends Component {
                           value={this.state.tags}
                         />
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <input type="submit" className="btn btn-primary" value="Add New Goal" />
                     </div>
                     </form>

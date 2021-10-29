@@ -109,11 +109,16 @@ addTask = (newTask) => {
   this.setState({
     tasks: copyTasks
   })
+  this.getTasks()
 }
 
 
 // Edit Task
- 
+handleEditedTaskData = (data) => {
+  this.setState({
+    tasksData: data,
+  });
+}
 
 // Delete Task
 deleteTask = (id) => {
@@ -170,10 +175,10 @@ componentDidMount() {
           </>
           }
           {/* <Calendar /> */}
-          {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
-          <TasksForm baseUrl={baseUrl} addTask={this.addTask} /> */}
+          {/* {/* <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} /> */}
+          <TasksForm baseUrl={baseUrl} addTask={this.addTask} /> 
           <GoalsList goals={this.state.goalsData}  goalSubmit={this.handleGoalSubmit} handleData={this.handleEditedData} baseUrl={baseUrl} getGoals={this.getGoals}/>
-          <TasksList tasks={this.state.tasksData}/>
+          <TasksList tasks={this.state.tasksData} handleEditedTaskData={this.handleEditedTaskData} baseUrl={baseUrl} getTasks={this.getTasks}/>
         </>
         : <Welcome />
       }
