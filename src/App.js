@@ -179,7 +179,7 @@ loginUser = async (e) => {
   e.preventDefault()
   const url = baseUrl + '/users/login'
   const loginBody = {
-    username: e.target.username.value,
+    email: e.target.email.value,
     password: e.target.password.value
   }
   try {
@@ -192,6 +192,9 @@ loginUser = async (e) => {
       credentials: "include" // SENDING COOKIES
     })
 
+    console.log(response)
+    console.log('BODY: ', response.body)
+
     if (response.status === 200) {
       this.getGoals()
       this.getTask()
@@ -201,6 +204,33 @@ loginUser = async (e) => {
     console.log('Error => ', err);
   }
 }
+
+// REGISTER USER
+register = async (e) => {
+  e.preventDefault()
+  const url = baseUrl + 'users/signup'
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        username: e.target.username.value,
+        password: e.target.password.value,
+        confirmPassword: e.target.confirmPassword.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    if (response.status === 200) {
+      this.getGoals()
+      this.getTasks()
+    }
+  }
+  catch (err) {
+    console.log('Error => ', err)
+  }
+}
+
 
 componentDidMount() {
   this.getGoals()
@@ -214,6 +244,7 @@ componentDidMount() {
 
   render() {
     return (
+<<<<<<< HEAD
       <>
         {/*Conditional for User Login*/}
         {/* If user not logged in, will go to welcome page */}
@@ -263,6 +294,17 @@ componentDidMount() {
         )}
       </>
     );
+=======
+      <div className="App">
+      <h1>WELCOME TO THE APP</h1>
+      <Nav />
+      <GoalsForm baseUrl={baseUrl} addGoals={this.addGoal} />
+      <TasksForm baseUrl={baseUrl} addTask={this.addTask} />
+      <Signup />
+      <Login />
+      </div>
+     );
+>>>>>>> adea093 (signup and login form)
   }
 }
 
