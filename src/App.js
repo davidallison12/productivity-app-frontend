@@ -29,7 +29,9 @@ class App extends Component {
 
 getGoals = () => {
   // fetch
-  fetch(baseUrl + '/goals')
+  fetch(baseUrl + '/goals', {
+    credentials: 'include' // sending cookies
+  })
   .then((res) => {
     if (res.status === 200) {
       return res.json()
@@ -77,8 +79,19 @@ deleteGoal = (id) => {
     });
   };
 
-  //Edit Goals
-  handleEditedData = (data) => {
+//======= TASKS CRUD FUNCTIONS =========
+getTasks = () => {
+  fetch(baseUrl + '/tasks', {
+    credentials: 'include' // sending cookies
+  })
+  .then((res) => {
+    if(res.status === 200) {
+      return res.json()
+    } else {
+      return[]
+    }
+  }).then((data) => {
+    console.log(data)
     this.setState({
       goalsData: data,
     });
@@ -161,11 +174,38 @@ deleteGoal = (id) => {
     });
   };
 
-  toggleTaskModal = () => {
-    this.setState({
-      tasksFormModal: !this.state.tasksFormModal,
-    });
-  };
+// LOGIN USER
+loginUser = async (e) => {
+  e.preventDefault()
+  const url = baseUrl + '/users/login'
+  const loginBody = {
+    username: e.target.username.value,
+    password: e.target.password.value
+  }
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(loginBody),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: "include" // SENDING COOKIES
+    })
+
+    if (response.status === 200) {
+      this.getGoals()
+      this.getTask()
+    }
+  }
+  catch (err) {
+    console.log('Error => ', err);
+  }
+}
+
+componentDidMount() {
+  this.getGoals()
+  this.getTasks()
+}
 
   componentDidMount() {
     this.getGoals();
