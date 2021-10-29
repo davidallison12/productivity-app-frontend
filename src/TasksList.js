@@ -21,6 +21,14 @@ class TasksList extends Component {
     });
   };
 
+  closeModal = (event) => {
+    event.preventDefault();
+
+      this.setState({
+          modalHere: false
+      })
+  }
+
   handleChange = (event) => {
     console.log(event.target);
     this.setState({
@@ -132,8 +140,8 @@ class TasksList extends Component {
                   <button
                     type="button"
                     className="btn-close"
-                    data-bs-dismiss="modal"
                     aria-label="Close"
+                    onClick={(e)=> {this.closeModal(e)}}
                   ></button>
                 </div>
                 <div className="modal-body">
@@ -176,7 +184,7 @@ class TasksList extends Component {
                   <button
                     type="button"
                     className="btn btn-secondary"
-                    data-bs-dismiss="modal"
+                    onClick={(e)=> {this.closeModal(e)}}
                   >
                     Close
                   </button>

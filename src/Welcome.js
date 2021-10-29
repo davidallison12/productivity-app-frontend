@@ -8,7 +8,7 @@ const Welcome = () => {
         <h1>WELCOME TO ACCOMPLI</h1>
         <h5>Sign in or login to get started meeting your goals!</h5>
         <div>
-        <button onClick>SIGN IN</button>
+        <button onClick>SIGN UP</button>
         <button onClick>LOG IN</button>
         </div>
         </>
