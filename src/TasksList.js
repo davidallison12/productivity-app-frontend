@@ -93,6 +93,7 @@ class TasksList extends Component {
                 <td>{task.accomplished ? 'true' : 'false'}</td>
                 <td><button onClick={() => {this.showModal(task)}} > EDIT
                     </button></td>
+                    <td onClick={() => {this.props.deleteTask(task._id)}}><i className="icon bi-trash-fill"></i></td>
                 </tr>
             )
         })
@@ -107,6 +108,7 @@ class TasksList extends Component {
                        <th>Due Date</th>
                        <th>Created On</th>
                        <th>Accomplished</th>
+                       <th> </th>
                     </thead>
                     <tbody>
                         {listTasks}

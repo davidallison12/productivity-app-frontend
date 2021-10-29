@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EditGoals from './EditGoals';
+
 
 
 
@@ -11,8 +11,6 @@ class GoalsForm extends Component {
             dueDate: '',
             tags: '',
         }
-        
-        // this.handleGoalChange = this.handleGoalChange.bind(this);
     }
 
     //Handles Changes to Inputs
