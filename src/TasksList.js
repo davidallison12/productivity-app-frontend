@@ -16,7 +16,7 @@ class TasksList extends Component {
       currentTask: task,
       task: task.task,
       dueDate: task.dueDate,
-      accomplished: false,
+      accomplished: task.accomplished,
       createdOn: task.createdOn,
     });
   };
@@ -30,16 +30,16 @@ class TasksList extends Component {
 
   handleCheckbox = (event) => {
     console.log(event.target.value);
-    // this.setState({
-    //   [event.target.name]: event.target.value,
-    // });
+    this.setState({
+      [event.target.name]: !this.state.accomplished
+    });
   };
 
   handleSubmit = async (event) => {
     event.preventDefault();
     // fetch
     console.log("Something happened");
-    console.log(event.target);
+    console.log(event.target.accomplished.checked);
     const url = this.props.baseUrl + "/tasks/" + this.state.currentTask._id;
     try {
       const response = await fetch(url, {
@@ -48,7 +48,7 @@ class TasksList extends Component {
           task: this.state.task,
           dueDate: this.state.dueDate,
           createdOn: this.state.createdOn,
-          accomplished: this.state.accomplished,
+          accomplished: event.target.accomplished.checked,
         }),
         headers: {
           "Content-Type": "application/json",
