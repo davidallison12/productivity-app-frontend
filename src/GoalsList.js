@@ -201,7 +201,7 @@ class GoalsList extends Component {
                   <input
                     type="submit"
                     className="btn btn-primary"
-                    value="Add New Goal"
+                    value="Edit Goal"
                   />
                 </div>
               </form>
