@@ -40,7 +40,8 @@ class Welcome extends Component {
     render() {
         return (
             <>
-            <h1>WELCOME TO ACCOMPLI</h1>
+            <div class="container">
+            <h1 class="font-welcome">WELCOME TO ACCOMPLI</h1>
             <h5>Sign in or login to get started meeting your goals!</h5>
 
 
@@ -137,6 +138,7 @@ class Welcome extends Component {
                   <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                 </div>
               </div>
+            </div>
             </div>
             </div>
             </>

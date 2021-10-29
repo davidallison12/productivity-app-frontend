@@ -91,12 +91,12 @@ class GoalsList extends Component {
       return (
         // <div class>
         <tr class="border-dark" key={goal._id}>
-          <td><b>{goal.goal}</b></td>
+          <td>{goal.goal}</td>
           <td>{goal.dueDate}</td>
           <td>{goal.accomplished ? "true" : "false"}</td>
           <td>{goal.tags}</td>
           <td>
-            <button
+            <button type="button" class="btn btn-light"
               onClick={() => {
                 this.showModal(goal);
               }}
@@ -119,15 +119,14 @@ class GoalsList extends Component {
 
     return (
       <div class="container">
-        <h1>Goals List</h1>
-        <table class="table table-primary table-striped">
-          <thead>
-            <th>Goal</th>
-            <th>Due Date</th>
-            <th>Accomplished</th>
-            <th>Tags</th>
-            <th> </th>
-            <th> </th>
+        <br></br>
+        <h1 class="font-link">Goals List</h1>
+        <table class="table table-primary table-striped font-goal-task">
+          <thead class="font-headers">
+            <td>Goal</td>
+            <td>Due Date</td>
+            <td>Accomplished</td>
+            <td>Tags</td>
           </thead>
           <tbody>{listGoals}</tbody>
         </table>

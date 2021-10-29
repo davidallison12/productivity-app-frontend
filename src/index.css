@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.font-link {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px;
+}
+
+.font-headers {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
+}
+
+.font-goal-task {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+}
+
+.font-welcome {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 60px;
+}

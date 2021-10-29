@@ -95,7 +95,7 @@ class TasksList extends Component {
           <td>{task.createdOn}</td>
           <td>{task.accomplished ? "true" : "false"}</td>
           <td>
-            <button
+            <button type="button" class="btn btn-light"
               onClick={() => {
                 this.showModal(task);
               }}
@@ -117,14 +117,13 @@ class TasksList extends Component {
 
     return (
       <div class="container">
-        <h1>Task List</h1>
+        <h1 class="font-link">Task List</h1>
         <table class="table table-warning table-striped">
-          <thead>
-            <th>Task</th>
-            <th>Due Date</th>
-            <th>Created On</th>
-            <th>Accomplished</th>
-            <th> </th>
+          <thead class="font-headers">
+            <td>Task</td>
+            <td>Due Date</td>
+            <td>Created On</td>
+            <td>Accomplished</td>
           </thead>
           <tbody>{listTasks}</tbody>
         </table>
