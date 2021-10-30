@@ -259,7 +259,7 @@ class App extends Component {
               baseUrl={baseUrl}
               getGoals={this.getGoals}
               deleteGoal={this.deleteGoal}
-            />
+            /><br></br>
             <TasksList
               tasks={this.state.tasksData}
               handleEditedTaskData={this.handleEditedTaskData}
