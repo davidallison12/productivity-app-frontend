@@ -6,11 +6,11 @@ class Dashboard extends Component {
         super(props);
         this.state = {  }
     }
-    render() { 
-        return ( 
-            <h1>This is the dashboard.</h1>
-         );
+    render() {
+        return (
+          <h1>This is the dashboard</h1>
+        )
     }
 }
- 
+
 export default Dashboard;

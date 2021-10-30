@@ -90,10 +90,8 @@ class TasksList extends Component {
   render() {
     const listTasks = this.props.tasks.map((task) => {
       return (
-        <tr class="border-dark" key={task._id}>
-          <td>
-            <b>{task.task}</b>
-          </td>
+        <tr class="border-light" key={task._id}>
+          <td>{task.task}</td>
           <td>{task.dueDate}</td>
           <td>{task.createdOn}</td>
           <td>{task.accomplished ? "true" : "false"}</td>
@@ -121,18 +119,17 @@ class TasksList extends Component {
     });
 
     return (
-      <>
-        <div class="container">
-          <h1 class="font-link">Task List</h1>
-          <table class="table table-warning table-striped">
-            <thead class="font-headers">
-              <td>Task</td>
-              <td>Due Date</td>
-              <td>Created On</td>
-              <td>Accomplished</td>
-            </thead>
-            <tbody>{listTasks}</tbody>
-          </table>
+      <div class="container">
+        <h1 class="font-link text-light">Task List</h1>
+        <table class="table table-dark table-striped table-bordered font-goal-task">
+          <thead class="font-headers text-light">
+            <td>Task</td>
+            <td>Due Date</td>
+            <td>Created On</td>
+            <td>Accomplished</td>
+          </thead>
+          <tbody>{listTasks}</tbody>
+        </table>
         </div>
         {this.state.modalHere && (
           <Modal
