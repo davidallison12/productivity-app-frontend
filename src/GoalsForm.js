@@ -67,15 +67,15 @@ class GoalsForm extends Component {
     console.log(this.state.goal);
     return (
       <>
-        <Modal
+        <Modal class="bg-light"
           show={this.props.goalsFormModal}
           onHide={this.props.toggleGoalModal}
         >
           <form onSubmit={this.handleSubmit}>
             <Modal.Header closeButton>
-              <Modal.Title>Create New Goal</Modal.Title>
+              <Modal.Title class="text-dark font-welcome-buttons">Create New Goal</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body class="row mx-3 g-1 font-welcome-text">
               <label htmlFor="goal">Goal: </label>
               <input
                 type="text"
@@ -100,13 +100,13 @@ class GoalsForm extends Component {
                 onChange={(e) => this.handleChange(e)}
                 value={this.state.tags}
               />
-            </Modal.Body>
+          </Modal.Body><br></br>
             <Modal.Footer>
-              <Button variant="secondary" onClick={this.props.toggleGoalModal}>
+              <Button variant="secondary" className="font-signup-buttons" onClick={this.props.toggleGoalModal}>
                 Close
               </Button>
               <input
-                className="btn btn-primary"
+                className="btn btn-dark text-light font-signup-buttons"
                 type="submit"
                 value="Add New Goal"
               />
