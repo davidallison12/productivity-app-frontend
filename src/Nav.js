@@ -23,15 +23,10 @@ const Nav = (props) => {
           </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-light text-right" href="#">
+          <a className="nav-link text-light text-right" href="#" onClick={props.logout}>
             Logout
           </a>
         </li>
-        <li className="nav-item">
-          <form onSubmit={props.logout}>
-          <i className="nav-link text-light text-right" type="submit" value="Logout" href="#" />
-          </form>
-          </li>
       </ul>
     </div>
     </nav>
