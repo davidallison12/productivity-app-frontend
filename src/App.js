@@ -16,7 +16,7 @@ class App extends Component {
       userData: [],
       goalsData: [],
       tasksData: [],
-      userLoggedIn: true, // If false, will be sent to welocome page to sign up and log in. If true, will be sent to page.
+      userLoggedIn: false, // If false, will be sent to welocome page to sign up and log in. If true, will be sent to page.
       goalsFormModal: false,
       tasksFormModal: false,
     };
@@ -128,6 +128,73 @@ class App extends Component {
     });
   };
 
+
+  //====== USER ========
+  registerUser = async (event) => {
+    console.log('hit sign up')
+    event.preventDefault()
+    const url = baseUrl + '/users/signup'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: event.target.email.value,
+          username: event.target.username.value,
+          password: event.target.password.value,
+          confirmedPassword: event.target.confirmedPassword.value
+
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.status === 200) {
+        alert('User is registered!')
+      } else {
+        response.json().then((data) => {
+          console.log(data);
+        })}
+    }
+    catch (err) {
+      console.log('Error => ', err);
+    }
+  }
+
+
+  loginUser = async (event) => {
+    console.log('loginUser')
+    event.preventDefault()
+    const url = baseUrl + '/users/login'
+    const loginBody = {
+      username: event.target.username.value,
+      password: event.target.password.value
+    }
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(loginBody),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        // credentials: "include"
+      })
+      console.log(response)
+      console.log("BODY: ", response.body)
+
+      if (response.status === 200) {
+        this.setState({
+          userLoggedIn: true
+        })
+      }
+    }
+    catch (err) {
+      console.log('Error => ', err)
+      alert('Error: Unable to log in at this time.')
+    }
+  }
+  
+
+  
   //======= MODALS ========
   toggleGoalModal = () => {
     this.setState({
@@ -141,10 +208,15 @@ class App extends Component {
     });
   };
 
+
+
+
   componentDidMount() {
     this.getGoals();
     this.getTasks();
-  }
+  };
+
+
 
   render() {
     return (
@@ -193,7 +265,7 @@ class App extends Component {
             />
           </>
         ) : (
-          <Welcome />
+          <Welcome  loginUser={this.loginUser} registerUser={this.registerUser} baseUrl={baseUrl}/>
         )}
       </>
     );

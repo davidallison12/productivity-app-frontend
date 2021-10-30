@@ -23,7 +23,7 @@ class GoalsList extends Component {
   };
 
   closeModal = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     this.setState({
       modalHere: false,
