@@ -191,9 +191,6 @@ class TasksList extends Component {
                   type="submit"
                   value="Update Task"
                 />
-                {/* <Button variant="primary"  type="submit" onClick={this.props.toggleGoalModal}>
-                  Add New Goal
-                </Button> */}
               </Modal.Footer>
             </form>
           </Modal>

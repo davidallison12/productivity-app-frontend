@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Modal, Button } from "react-bootstrap";
 
 class GoalsList extends Component {
   constructor(props) {
@@ -24,10 +25,10 @@ class GoalsList extends Component {
   closeModal = (event) => {
     event.preventDefault();
 
-      this.setState({
-          modalHere: false
-      })
-  }
+    this.setState({
+      modalHere: false,
+    });
+  };
 
   handleChange = (event) => {
     console.log(event.target);
@@ -39,7 +40,7 @@ class GoalsList extends Component {
   handleCheckbox = (event) => {
     console.log(event.target.value);
     this.setState({
-      [event.target.name]: !this.state.accomplished
+      [event.target.name]: !this.state.accomplished,
     });
   };
 
@@ -96,7 +97,9 @@ class GoalsList extends Component {
           <td>{goal.accomplished ? "true" : "false"}</td>
           <td>{goal.tags}</td>
           <td>
-            <button type="button" class="btn btn-light"
+            <button
+              type="button"
+              class="btn btn-light"
               onClick={() => {
                 this.showModal(goal);
               }}
@@ -118,97 +121,83 @@ class GoalsList extends Component {
     });
 
     return (
-      <div class="container">
-        <br></br>
-        <h1 class="font-link">Goals List</h1>
-        <table class="table table-primary table-striped font-goal-task">
-          <thead class="font-headers">
-            <td>Goal</td>
-            <td>Due Date</td>
-            <td>Accomplished</td>
-            <td>Tags</td>
-          </thead>
-          <tbody>{listGoals}</tbody>
-        </table>
-
+      <>
+        <div class="container">
+          <br></br>
+          <h1 class="font-link">Goals List</h1>
+          <table class="table table-primary table-striped font-goal-task">
+            <thead class="font-headers">
+              <td>Goal</td>
+              <td>Due Date</td>
+              <td>Accomplished</td>
+              <td>Tags</td>
+            </thead>
+            <tbody>{listGoals}</tbody>
+          </table>
+        </div>
         {this.state.modalHere && (
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <form onSubmit={this.handleSubmit}>
-                <div className="modal-header">
-                  <h5 className="modal-title" id="editGoalsModalLabel">
-                    Edit Goals
-                  </h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    aria-label="Close"
-                    onClick={(e)=> {this.closeModal(e)}}
-                  >
-                  ></button>
-                </div>
-                <div className="modal-body">
-                  <label htmlFor="goal">Goal: </label>
+          <Modal show={this.state.modalHere} onHide={this.closeModal}>
+            <form onSubmit={this.handleSubmit}>
+              <Modal.Header closeButton>
+                <Modal.Title>Update Goal</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <label htmlFor="goal">Goal: </label>
+                <input
+                  type="text"
+                  id="goal"
+                  name="goal"
+                  onChange={(e) => this.handleChange(e)}
+                  value={this.state.goal}
+                />
+                <label htmlFor="dueDate">Due Date: </label>
+                <input
+                  type="date"
+                  id="dueDate"
+                  name="dueDate"
+                  onChange={(e) => this.handleChange(e)}
+                  value={this.state.dueDate}
+                />
+                <label htmlFor="tags">Tags: </label>
+                <input
+                  type="text"
+                  id="tags"
+                  name="tags"
+                  onChange={(e) => this.handleChange(e)}
+                  value={this.state.tags}
+                />
+                <label htmlFor="accomplished">Accomplished: </label>
+                {this.state.accomplished ? (
                   <input
-                    type="text"
-                    id="goal"
-                    name="goal"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.goal}
+                    type="checkbox"
+                    id="accomplished"
+                    name="accomplished"
+                    onChange={(e) => this.handleCheckbox(e)}
+                    checked
                   />
-                  <label htmlFor="dueDate">Due Date: </label>
+                ) : (
                   <input
-                    type="date"
-                    id="dueDate"
-                    name="dueDate"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.dueDate}
+                    type="checkbox"
+                    id="accomplished"
+                    name="accomplished"
+                    onChange={(e) => this.handleCheckbox(e)}
                   />
-                  <label htmlFor="tags">Tags: </label>
-                  <input
-                    type="text"
-                    id="tags"
-                    name="tags"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.tags}
-                  />
-                  <label htmlFor="accomplished">Accomplished: </label>
-                  {this.state.accomplished ? (
-                    <input
-                      type="checkbox"
-                      id="accomplished"
-                      name="accomplished"
-                      onChange={(e) => this.handleCheckbox(e)}
-                      checked
-                    />
-                  ) : (
-                    <input
-                      type="checkbox"
-                      id="accomplished"
-                      name="accomplished"
-                      onChange={(e) => this.handleCheckbox(e)}
-                    />
-                  )}
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={(e)=> {this.closeModal(e)}}
-                  >
-                    Close
-                  </button>
-                  <input
-                    type="submit"
-                    className="btn btn-primary"
-                    value="Edit Goal"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
+                )}
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={this.closeModal}>
+                  Close
+                </Button>
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Update Goal"
+                />
+              </Modal.Footer>
+            </form>
+          </Modal>
         )}
-      </div>
+      </>
     );
   }
 }
