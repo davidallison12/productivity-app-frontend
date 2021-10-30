@@ -90,7 +90,7 @@ class GoalsList extends Component {
   render() {
     const listGoals = this.props.goals.map((goal) => {
       return (
-        <tr class="border-light" key={goal._id}>
+        <tr className="border-light" key={goal._id}>
           <td>{goal.goal}</td>
           <td>{goal.dueDate}</td>
           <td>{goal.accomplished ? "true" : "false"}</td>
@@ -98,7 +98,7 @@ class GoalsList extends Component {
           <td>
             <button
               type="button"
-              class="btn btn-light"
+              className="btn btn-light"
               onClick={() => {
                 this.showModal(goal);
               }}
@@ -121,11 +121,11 @@ class GoalsList extends Component {
 
     return (
       <>
-      <div class="container">
+      <div className="container">
         <br></br>
-        <h1 class="font-link text-light">Goals List</h1>
-        <table class="table table-dark  table-striped table-bordered font-goal-task">
-          <thead class="font-headers text-light">
+        <h1 className="font-link text-light">Goals List</h1>
+        <table className="table table-dark  table-striped table-bordered font-goal-task">
+          <thead className="font-headers text-light">
             <td>Goal</td>
             <td>Due Date</td>
             <td>Accomplished</td>

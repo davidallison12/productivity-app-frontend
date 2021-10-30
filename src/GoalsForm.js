@@ -21,9 +21,9 @@ class GoalsForm extends Component {
   };
 
   handleSubmit = (event) => {
+
     event.preventDefault();
     // fetch
-
     fetch(this.props.baseUrl + "/goals", {
       method: "POST",
       body: JSON.stringify({
@@ -41,15 +41,18 @@ class GoalsForm extends Component {
       .then((data) => {
         console.log(data);
         this.props.addGoals(data);
-        this.setState({
-          goal: "",
-          dueDate: "",
-          accomplished: false,
-          tags: "",
-        });
         this.props.toggleGoalModal();
       });
   };
+
+  resetState = () => {
+    this.setState({
+        goal: "",
+        dueDate: "",
+        accomplished: false,
+        tags: "",
+      });
+  }
 
   handleShow = () => {
     this.setState({
@@ -110,9 +113,6 @@ class GoalsForm extends Component {
                 type="submit"
                 value="Add New Goal"
               />
-              {/* <Button variant="primary"  type="submit" onClick={this.props.toggleGoalModal}>
-              Add New Goal
-            </Button> */}
             </Modal.Footer>
           </form>
         </Modal>

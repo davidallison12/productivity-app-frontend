@@ -186,7 +186,10 @@ class App extends Component {
         this.setState({
           userLoggedIn: true
         })
-      }
+      } else {
+        response.json().then((data) => {
+          console.log(data);
+        })}
     }
     catch (err) {
       console.log('Error => ', err)

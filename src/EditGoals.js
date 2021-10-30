@@ -57,36 +57,6 @@ class EditGoals extends Component {
   render() {
     console.log(this.state.goal);
     return (
-    //   <div>
-    //     <h1>Edit Goal</h1>
-    //     <form >
-    //       <label htmlFor="goal">Goal: </label>
-    //       <input
-    //         type="text"
-    //         id="goal"
-    //         name="goal"
-    //         onChange={(e) => this.handleChange(e)}
-    //         value={this.state.goal}
-    //       />
-    //       <label>Due Date: </label>
-    //       <input
-    //         type="date"
-    //         id="name"
-    //         name="dueDate"
-    //         onChange={(e) => this.handleChange(e)}
-    //         value={this.state.dueDate}
-    //       />
-    //       <label>Tags: </label>
-    //       <input
-    //         type="text"
-    //         id="name"
-    //         name="tags"
-    //         onChange={(e) => this.handleChange(e)}
-    //         value={this.state.tags}
-    //       />
-    //       <input type="submit" value="Add New Goal" />
-    //     </form>
-    //   </div>
     <div class="modal fade" id="editGoalsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
