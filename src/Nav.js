@@ -22,9 +22,11 @@ const Nav = (props) => {
            Calendar View
           </a>
         </li>
-        {/* <li className="nav-item">
-          <a className="nav-link disabled">Disabled</a>
-        </li> */}
+        <li className="nav-item">
+          <a className="nav-link text-light text-right" href="#">
+            Logout
+          </a>
+        </li>
       </ul>
     </div>
     </nav>

@@ -90,7 +90,7 @@ class TasksList extends Component {
   render() {
     const listTasks = this.props.tasks.map((task) => {
       return (
-        <tr className="border-light" key={task._id}>
+        <tr className="border-light align-middle text-center" key={task._id}>
           <td>{task.task}</td>
           <td>{task.dueDate}</td>
           <td>{task.createdOn}</td>
@@ -98,7 +98,7 @@ class TasksList extends Component {
           <td>
             <button
               type="button"
-              className="btn btn-light"
+              className="btn btn-lg btn-light"
               onClick={() => {
                 this.showModal(task);
               }}
@@ -121,9 +121,9 @@ class TasksList extends Component {
     return (
       <>
       <div className="container">
-        <h1 className="font-link text-light">Task List</h1>
-        <table className="table table-dark table-striped table-bordered font-goal-task">
-          <thead className="font-headers text-light">
+        <h1 className="font-link text-light badge badge-dark">Task List</h1>
+        <table className="table table-dark table-striped font-goal-task">
+          <thead className="font-headers text-light align-middle text-center">
             <td>Task</td>
             <td>Due Date</td>
             <td>Created On</td>
@@ -139,17 +139,17 @@ class TasksList extends Component {
           >
             <form onSubmit={this.handleSubmit}>
               <Modal.Header closeButton>
-                <Modal.Title>Update Task</Modal.Title>
+                <Modal.Title class="text-dark font-welcome-buttons">Update Task</Modal.Title>
               </Modal.Header>
-              <Modal.Body>
-                <label htmlFor="task">Goal: </label>
+              <Modal.Body class="row mx-3 g-1 font-welcome-text">
+                <label htmlFor="task">Goal: </label><br></br>
                 <input
                   type="text"
                   id="task"
                   name="task"
                   onChange={(e) => this.handleChange(e)}
                   value={this.state.task}
-                />
+                /><br></br>
                 <label htmlFor="dueDate">Due Date: </label>
                 <input
                   type="date"
@@ -157,9 +157,9 @@ class TasksList extends Component {
                   name="dueDate"
                   onChange={(e) => this.handleChange(e)}
                   value={this.state.dueDate}
-                />
-                <label htmlFor="accomplished">Accomplished: </label>
-
+                /><br></br>
+              <label class="text-center" htmlFor="accomplished">Accomplished: </label>
+                <br></br>
                 {this.state.accomplished ? (
                   <input
                     type="checkbox"
@@ -176,16 +176,16 @@ class TasksList extends Component {
                     onChange={(e) => this.handleCheckbox(e)}
                   />
                 )}
-              </Modal.Body>
+              </Modal.Body><br></br>
               <Modal.Footer>
                 <Button
-                  variant="secondary"
+                  variant="secondary" className="font-signup-buttons"
                   onClick={this.closeModal}
                 >
                   Close
                 </Button>
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-dark text-light font-signup-buttons"
                   type="submit"
                   value="Update Task"
                 />
