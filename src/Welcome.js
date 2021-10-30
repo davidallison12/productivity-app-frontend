@@ -51,7 +51,8 @@ class Welcome extends Component {
         }),
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        credentials: "include",
       })
       if (response.status === 200) {
         alert('User is registered!')
