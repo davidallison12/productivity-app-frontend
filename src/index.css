@@ -1,10 +1,21 @@
 body {
-  margin: 0;
+  background: url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-backgorund-size: cover;
+  background-size: cover;
+}
+
+body {
+  /* margin: 300px; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+  background-size: cover;
+  background-repeat: no-repeat; */
 }
 
 code {
@@ -30,4 +41,30 @@ code {
 .font-welcome {
   font-family: 'Bebas Neue', cursive;
   font-size: 60px;
+  color: black
+}
+
+.font-welcome-buttons {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px;
+  color: black;
+}
+
+.font-welcome-text {
+  font-size: 20px;
+  color: black
+}
+
+.font-signup-buttons {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
+  color: black;
+}
+
+.background {
+  background-image: url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80');
+}
+
+.welcome-margin {
+  margin: 300px;
 }

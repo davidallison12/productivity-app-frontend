@@ -90,8 +90,7 @@ class GoalsList extends Component {
   render() {
     const listGoals = this.props.goals.map((goal) => {
       return (
-        // <div class>
-        <tr class="border-dark" key={goal._id}>
+        <tr class="border-light" key={goal._id}>
           <td>{goal.goal}</td>
           <td>{goal.dueDate}</td>
           <td>{goal.accomplished ? "true" : "false"}</td>
@@ -115,26 +114,26 @@ class GoalsList extends Component {
           >
             <i className="icon bi-trash-fill"></i>
           </td>
+
         </tr>
-        // </div>
       );
     });
 
     return (
-      <>
-        <div class="container">
-          <br></br>
-          <h1 class="font-link">Goals List</h1>
-          <table class="table table-primary table-striped font-goal-task">
-            <thead class="font-headers">
-              <td>Goal</td>
-              <td>Due Date</td>
-              <td>Accomplished</td>
-              <td>Tags</td>
-            </thead>
-            <tbody>{listGoals}</tbody>
-          </table>
+      <div class="container">
+        <br></br>
+        <h1 class="font-link text-light">Goals List</h1>
+        <table class="table table-dark  table-striped table-bordered font-goal-task">
+          <thead class="font-headers text-light">
+            <td>Goal</td>
+            <td>Due Date</td>
+            <td>Accomplished</td>
+            <td>Tags</td>
+          </thead>
+          <tbody>{listGoals}</tbody>
+        </table>
         </div>
+
         {this.state.modalHere && (
           <Modal show={this.state.modalHere} onHide={this.closeModal}>
             <form onSubmit={this.handleSubmit}>
