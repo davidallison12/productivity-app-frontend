@@ -120,6 +120,7 @@ class GoalsList extends Component {
     });
 
     return (
+      <>
       <div class="container">
         <br></br>
         <h1 class="font-link text-light">Goals List</h1>

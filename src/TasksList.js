@@ -119,6 +119,7 @@ class TasksList extends Component {
     });
 
     return (
+      <>
       <div class="container">
         <h1 class="font-link text-light">Task List</h1>
         <table class="table table-dark table-striped table-bordered font-goal-task">
