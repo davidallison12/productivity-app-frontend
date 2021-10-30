@@ -43,17 +43,17 @@ class TasksForm extends Component {
   render() {
     return (
       <>
-        <Modal
+        <Modal class="bg-light"
           show={this.props.tasksFormModal}
           onHide={this.props.toggleTaskModal}
         >
           <form onSubmit={this.handleSubmit}>
             <Modal.Header closeButton>
-              <Modal.Title>Create New Task</Modal.Title>
+              <Modal.Title class="text-dark font-welcome-buttons">Create New Task</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body class="row mx-3 g-3 font-welcome-text">
               <div>
-                  <label htmlFor="task">Task: </label>
+                  <label htmlFor="task">Task: </label><br></br>
                   <input
                     type="text"
                     id="task"
@@ -61,22 +61,24 @@ class TasksForm extends Component {
                     onChange={(e) => this.handleChange(e)}
                     value={this.state.task}
                   />
-                  <label>Due Date: </label>
+                <br></br>
+                  <label>Due Date: </label><br></br>
                   <input
                     type="date"
                     id="dueDate"
                     name="dueDate"
                     onChange={(e) => this.handleChange(e)}
                     value={this.state.dueDate}
-                  />
+                  /><br></br>
               </div>
             </Modal.Body>
+            <br></br>
             <Modal.Footer>
-              <Button variant="secondary" onClick={this.props.toggleTaskModal}>
+              <Button variant="secondary" className="font-signup-buttons" onClick={this.props.toggleTaskModal}>
                 Close
               </Button>
               <input
-                className="btn btn-primary"
+                className="btn btn-dark text-light font-signup-buttons"
                 type="submit"
                 value="Add New Task"
               />

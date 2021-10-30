@@ -196,9 +196,9 @@ class App extends Component {
       alert('Error: Unable to log in at this time.')
     }
   }
-  
 
-  
+
+
   //======= MODALS ========
   toggleGoalModal = () => {
     this.setState({
