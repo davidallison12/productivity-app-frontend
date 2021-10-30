@@ -1,42 +1,76 @@
-import React, { Component } from 'react';
-
-
+import React, { Component } from "react";
 
 class Welcome extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            signUpModal: false,
-            loginModal: false
-         }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      signUpModal: false,
+      loginModal: false,
+      email: '',
+      username: '',
+      password: '',
+      confirmedPassword: ''
+    };
+  }
 
-    toggleSignUpModal = (event) => {
-        event.preventDefault()
+  toggleSignUpModal = (event) => {
+    event.preventDefault();
 
+    this.setState({
+      signUpModal: !this.state.signUpModal,
+    });
+  };
+
+  toggleLoginModal = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      loginModal: !this.state.loginModal,
+    });
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  registerUser = async (event) => {
+    console.log('hit sign up')
+    event.preventDefault()
+    const url = this.props.baseUrl + '/users/signup'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: event.target.email.value,
+          username: event.target.username.value,
+          password: event.target.password.value,
+          confirmedPassword: event.target.confirmedPassword.value
+
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.status === 200) {
+        alert('User is registered!')
         this.setState({
-            signUpModal: !this.state.signUpModal
+          email: '',
+          username: '',
+          password: '',
+          confirmedPassword: ''
         })
-
+        this.toggleSignUpModal()
+      } else {
+        response.json().then((data) => {
+          console.log(data);
+        })}
     }
-
-    toggleLoginModal = (event) => {
-        event.preventDefault()
-
-        this.setState({
-            loginModal: !this.state.loginModal
-        })
-
+    catch (err) {
+      console.log('Error => ', err);
     }
-
-
-    handleChange = (event) => {
-        this.setState({
-           [event.target.name] : event.target.value
-        })
-    }
-
-
+  }
 
 
     render() {
@@ -57,6 +91,7 @@ class Welcome extends Component {
             <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content bg-light">
+                <form onSubmit={this.registerUser}>
                 <div class="modal-header">
                   <h5 class="modal-title text-dark font-welcome-buttons" id="exampleModalLabel">Hello, please sign up for Accompli!</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -101,17 +136,26 @@ class Welcome extends Component {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary font-signup-buttons" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal">Sign Up</button>
+                  <input type="submit" class="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal" value="Sign Up" />
                 </div>
+                </form>
               </div>
             </div>
           </div>
 
 
+          {/* Login Modal */}
 
-          <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div
+            class="modal fade"
+            id="loginModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
             <div class="modal-dialog">
               <div class="modal-content">
+                <form onSubmit={this.props.loginUser}>
                 <div class="modal-header">
                   <h5 class="modal-title font-welcome-buttons" id="exampleModalLabel">Welcome back, Please log in!</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -137,8 +181,9 @@ class Welcome extends Component {
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary font-signup-buttons" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal">Login</button>
+                  <input type="submit" class="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal" value="Login" />
                 </div>
+              </form>
               </div>
             </div>
             </div>
