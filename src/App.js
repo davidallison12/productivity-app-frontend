@@ -8,7 +8,7 @@ import TasksList from "./TasksList";
 import Welcome from "./Welcome";
 
 
-let baseUrl = process.env.BASE_URL || "http://localhost:3003";
+let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 
 class App extends Component {
   constructor(props) {
@@ -195,6 +195,18 @@ class App extends Component {
       console.log('Error => ', err)
       alert('Error: Unable to log in at this time.')
     }
+  }
+
+  logout =  (event) => {
+    event.preventDefault()
+    const url = baseUrl + '/users/logout'
+    fetch(url, {
+      method: "DELETES"
+    }).then((res) => console.log(res.json()))
+    // .then(json => {
+    //   if(json.session) 
+    // })
+  
   }
 
 
