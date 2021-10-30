@@ -27,6 +27,11 @@ const Nav = (props) => {
             Logout
           </a>
         </li>
+        <li className="nav-item">
+          <form onSubmit={props.logout}>
+          <i className="nav-link text-light text-right" type="submit" value="Logout" href="#" />
+          </form>
+          </li>
       </ul>
     </div>
     </nav>
