@@ -62,7 +62,7 @@ class TasksList extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        // credentials: "include",
+        credentials: "include",
       });
       if (response.status === 200) {
         const updatedTask = await response.json();

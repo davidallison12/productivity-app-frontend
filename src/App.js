@@ -27,7 +27,9 @@ class App extends Component {
 
   getGoals = () => {
     // fetch
-    fetch(baseUrl + "/goals")
+    fetch(baseUrl + "/goals", {
+      credentials: "include"
+    })
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -63,6 +65,7 @@ class App extends Component {
   deleteGoal = (id) => {
     fetch(baseUrl + "/goals/" + id, {
       method: "DELETE",
+      credentials: "include"
     }).then((res) => {
       console.log(res);
       const findIndex = this.state.goalsData.findIndex(
@@ -78,7 +81,9 @@ class App extends Component {
 
   //======= TASKS CRUD FUNCTIONS =========
   getTasks = () => {
-    fetch(baseUrl + "/tasks")
+    fetch(baseUrl + "/tasks", {
+      credentials: "include"
+    })
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -115,6 +120,7 @@ class App extends Component {
   deleteTask = (id) => {
     fetch(baseUrl + "/tasks/" + id, {
       method: "DELETE",
+      credentials: "include"
     }).then((res) => {
       console.log(res);
       const findIndex = this.state.tasksData.findIndex(

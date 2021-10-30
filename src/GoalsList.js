@@ -62,7 +62,7 @@ class GoalsList extends Component {
         headers: {
           "Content-Type": "application/json",
         },
-        // credentials: "include",
+        credentials: "include",
       });
       if (response.status === 200) {
         const updatedGoal = await response.json();
