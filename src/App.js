@@ -177,7 +177,7 @@ class App extends Component {
         headers: {
           'Content-Type': 'application/json'
         },
-        // credentials: "include"
+        credentials: "include"
       })
       console.log(response)
       console.log("BODY: ", response.body)
@@ -197,18 +197,28 @@ class App extends Component {
     }
   }
 
+  // handleLogout = () => {
+  //   this.setState({
+  //     userLoggedIn: false
+  //   })
+  // }
+
   logout =  (event) => {
     event.preventDefault()
     const url = baseUrl + '/users/logout'
-    fetch(url, {
-      method: "DELETES"
-    }).then((res) => console.log(res.json()))
-    // .then(json => {
-    //   if(json.session) 
-    // })
-  
+    const response = fetch(url, {
+      method: "DELETE",
+      credentials: "include"
+    }).then((response => {
+      this.setState({
+        userLoggedIn: false
+      })
+    }))
+    // catch (err) {
+    //   console.log('Error =>', err)
+    //   alert('Error: Unable to log out at this time.')
+    // }
   }
-
 
 
   //======= MODALS ========
@@ -245,6 +255,7 @@ class App extends Component {
             <Nav
               toggleGoalModal={this.toggleGoalModal}
               toggleTaskModal={this.toggleTaskModal}
+              logout={this.logout}
             />
 
             {this.state.goalsFormModal && (
