@@ -1,6 +1,14 @@
 ## Accompli-Productivity-App-frontend
 A productivity app with main features including goal setting, a task lisk, reminder notifications and a interactive calendar. 
 
+#### Deployment links
+[Front End Deployment](https://accompli-frontend-app.herokuapp.com)
+
+[Back End Deployment](https://accompli-backend-app.herokuapp.com/)
+
+#### Associated Repositories
+[productivity-pp-backend](https://github.com/davidallison12/productivity-app-backend)
+
 ## Project Description
 The purpose of the this app is to expand on the basic features of most productivity apps but also include interesting tidbits that include checking the weather, accessing a contact list to share goals, and engaging with some inspirationsal or encouraging quotes/reminders to help you achieve your goals. 
 
